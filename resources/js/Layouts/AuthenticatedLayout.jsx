@@ -21,7 +21,7 @@ export default function Authenticated({ children }) {
                 Dashboard
             </Link>
             <Link
-                href={route('categories.list')}
+                //href={route('categories.list')}
                 className="w-56 py-2 px-3 mx-auto text-white rounded hover:bg-blue-400 mb-2">
                 Categories
             </Link>
