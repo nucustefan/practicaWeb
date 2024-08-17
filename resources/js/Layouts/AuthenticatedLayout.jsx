@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useForm } from 'react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Link } from '@inertiajs/react';
 
-export default function Authenticated({ user, header, children }) {
+export default function Authenticated({ children }) {
     const {post} = useForm({});
 
     const submit = (e) => {
