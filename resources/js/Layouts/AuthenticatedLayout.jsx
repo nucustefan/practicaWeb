@@ -3,8 +3,13 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Link } from '@inertiajs/react';
 
 export default function Authenticated({ user, header, children }) {
-    const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+    const {post} = useForm({});
 
+    const submit = (e) => {
+        e.preventDefault();
+
+        post(route('logout'));
+    };
     return (<div className="flex flex-row">
         <aside className={`min-h-screen w-1/6 bg-blue-500 text-white flex flex-col`}>
             <Link className="flex justify-center py-2 mb-4" href="/">
