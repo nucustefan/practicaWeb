@@ -1,7 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import {Head, Link, useForm} from '@inertiajs/react';
 import {Fragment} from "react";
-import {FontAwesomeIcon} from "@fontawesome/react-fontawesome";
+//import {FontAwesomeIcon} from "@fontawesome/react-fontawesome";
 import {faPencil, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 
