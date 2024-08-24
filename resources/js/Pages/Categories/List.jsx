@@ -1,21 +1,23 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import {Head, Link, useForm} from '@inertiajs/react';
+import {Head, Link, router, useForm} from '@inertiajs/react';
 import {Fragment} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPencil, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 
-export default function List({categories}) {
-    const {delete: deleteCategory} = useForm({});
+export default function List({categories, flash}) {
+    const {delete: deleteEntry} = useForm({});
 
-    // const handleDelete = (id) => {
-    //     console.log(id);
-    //
-    //     deleteCategory(route('categories.delete', [id]));
-    // }
+    const handleDelete = (id) => {
+        deleteEntry(route('categories.delete', [id]), {
+            onFinish: () => {
+                router.reload({only: ['categories']});
+            },
+        });
+    };
 
     return (
-        <AuthenticatedLayout>
+        <AuthenticatedLayout flash={flash}>
             <Head title="Category list"/>
             <div className="w-full">
                 <div className="py-4 px-4">
@@ -23,7 +25,7 @@ export default function List({categories}) {
 
                     <div className={'flex justify-end my-2'}>
                         <Link href={route('categories.create')}>
-                            <FontAwesomeIcon icon={faPlus} /> Add new category
+                            <FontAwesomeIcon icon={faPlus}/> Add new category
                         </Link>
                     </div>
 
@@ -45,10 +47,7 @@ export default function List({categories}) {
                                             <FontAwesomeIcon icon={faPencil} className={'text-blue-600'}/>
                                         </Link>
 
-                                        {/*TODO as form*/}
-                                        {/*<Link className={"ml-2"} onClick={() => handleDelete(category.id)}>*/}
-                                        {/*    <FontAwesomeIcon icon={faTrash} className={'text-red-600'}/>*/}
-                                        {/*</Link>*/}
+                                        <FontAwesomeIcon onClick={() => handleDelete(category.id)} icon={faTrash} className={'text-red-600 ml-2 cursor-pointer'}/>
                                     </div>
                                 </Fragment>
                             })}
